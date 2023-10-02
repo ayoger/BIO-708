@@ -1,0 +1,18 @@
+---
+title: "Effects of CO2 and nutrient stress on Ampithoe valida grazing in eelgrass habitats"
+format: docx
+editor: visual
+bibliography: references.bib
+---
+
+------------------------------------------------------------------------
+
+## Amy Yoger
+
+#### August 24, 2023
+
+#### <https://github.com/ayoger/BIO-708.git>
+
+## Introduction
+
+Seagrasses are widespread plants that perform valuable ecosystem services, such as sequestrating carbon dioxide, increasing shoreline protection, and providing habitat for animals. The high value of these ecosystems for humans and ocean life emphasizes the importance of researching how they are affected by environmental stressors associated with climate change. To fully understand how stressors influence valuable seagrass communities, it is essential to test how global stressors, such as ocean acidification, interact with local factors to mediate ecosystem functions. The major objective of this project is to test how rapidly changing ocean conditions due to climate change affect plant-animal linkages that dictate the health of critical seagrass habitat. Specifically, this project aims to investigate how ocean acidification interacts with local nutrient stress to alter herbivory on foundation species eelgrass (*Zostera marina*) in San Francisco Bay. We are interested in one non-native grazer in particular, *Ampithoe valida* (*A. valida*). *A. valida* is native to the US Atlantic coast and consumes algae in its native range, but in its introduced range of San Francisco Bay the abundant amphipod consumes large quantities of both epiphytic algae and seagrass itself, having net negative effects on them despite removing competing epiphytes. Using a series of mesocosm experiments, *A. valida* and eelgrass will be exposed to varying pH levels expected with accelerated climate change, combined with levels of increased nutrient pollution that are observed locally, to test how these combined stressors affect the relationship between *A. valida* and eelgrass. [@harper2022b]
