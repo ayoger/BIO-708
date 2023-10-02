@@ -1,0 +1,3 @@
+[2,"\n"]
+[1,"\u001B[31m\n\nprocessing file: Practice-Data-Visualization.rmarkdown\n\u001B[39m1/5                  \n2/5 [unnamed-chunk-1]\n\u001B[31m\nQuitting from lines 10-14 [unnamed-chunk-1] (Practice-Data-Visualization.rmarkdown)\n\u001B[39m"]
+[1,"\u001B[31mError in `contrib.url()`:\n! trying to use CRAN without setting a mirror\nBacktrace:\n 1. utils::install.packages(\"here\")\n 2. utils::contrib.url(repos, \"source\")\n\u001B[39m\u001B[31mExecution halted\n\u001B[39m"]

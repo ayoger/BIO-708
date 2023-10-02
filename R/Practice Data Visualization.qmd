@@ -11,8 +11,6 @@ install.packages('here')
 library(here)
 library(tidyverse)
 library(readr)
-
-#Relative vs. Absolute filepaths looking at creating projects; use 'here' in your project
 ```
 
 ## Loading Data & Viewing Data
@@ -40,5 +38,30 @@ Using Data Plots
 
 ```{r}
 #Make some plots
-ggplot(ca) +geom_point(aes(x=year,y=visitors))
+
+#to make a plot 
+ggplot(ca) +geom_point(aes(x=year,y=visitors, color=park_name))
+
+#to make a plot with color and a title 
+ggplot(ca) +geom_point(aes(x=year,y=visitors,color=park_name)) + labs(y='visitation', title='National park visitors')
+
+#another plot
+ggplot(ca) +geom_point(aes(x=year,y=visitors,color=park_name)) + labs(y='visitation', title='National park visitors')+theme_minimal() +theme(legend.title = element_blank())
+
+#create a new plot for SE parks showing scatterplot of visitors to each park per state 
+ggplot(se)+ geom_point(aes(x=year,y=visitors, color=state))+labs(y='visitation')
+
+ggplot(se)+ geom_point(aes(x=year,y=visitors, color=state))+labs(y='visitation', title='Southeast United States National Park Visitors')
+
+#making a box plot for se parks
+ggplot(se)+geom_boxplot(aes(x=park_name, y=visitors))
+
+#making plots per state
+ggplot(se)+geom_boxplot(aes(x=park_name, y=visitors))+facet_wrap(~state)
+
+#making plots with different scale
+ggplot(se)+geom_boxplot(aes(x=park_name, y=visitors))+facet_wrap(~state, scales='free')
+
+#show a line for visitors at se parks over time
+ggplot(se)+ geom_line(aes(x=year,y=vistors, color=park_name))
 ```
