@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+format: docx
+editor: visual
+---
+
+```{r}
+library(here)
+library(tidyverse)
+library(readr)
+
+ggplot(data = se)+ geom_line(aes(x=year,y=visitors, color=state))+labs(y='visitation') +
+  labs(x = "Year", y = "Visitors")+
+  ggtitle("Visitation Trends in US South East National Parks between 1972-2016")
+```
+
+```{r}
+library(here)
+library(tidyverse)
+library(readr)
+ggplot(data = acadia) + 
+  geom_point(aes(x = year, y = visitors)) +
+  geom_line(aes(x = year, y = visitors)) +
+  geom_smooth(aes(x = year, y = visitors)) +
+  labs(title = "Acadia National Park Visitation between 1920 and 2020",
+       y = "Visitation",
+       x = "Year") +
+  theme_bw()
+
+```
+
+## Note:
+
+This week was a little stressful with personal matters, unfortunately, so I wasn't able to give this assignment my all in terms of using relevant data to my project. I found it helpful instead to go back and slowly go through the steps to learn how to make graphs using the National Park data. I understand if this means a lower grade- and I look forward to continue working on my ggplot skills! My lab research techs are hoping to send me relevant data this week and I am excited to play around with that in the coming weeks. Thank you!

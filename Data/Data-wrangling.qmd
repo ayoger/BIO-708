@@ -1,0 +1,90 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+## Data Wrangling
+
+```{r}
+#load pakages
+library(tidyverse)
+
+#We will be wrangling gapminder data using dplyr. https://ohi-science.org/data-science-training/dplyr.html
+
+## read gapminder csv. Note the readr:: prefix identifies which package it's in
+gapminder <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv') 
+
+head(gapminder) #shows first 6 rows
+tail(gapminder) #shows last 6 rows
+str(gapminder) #see structure of data 
+summary(gapminder) #basic stats
+#gapminder is the data set so putting it in parenthesis tells R where to get the data
+
+filter(gapminder, lifeExp<29)
+filter(gapminder, country=='Mexico')
+PeruMex<-filter(gapminder, country %in% c('Mexico', 'Peru')) # how to get data from peru and mexico #how to save as separate data set, check it out- its on the top right 
+x <- filter(gapminder, country == "Brazil", year > 1986)  #name the data set 
+mean(x$lifeExp) #take average from your new data set
+
+select(gapminder, year, country, lifeExp) #select certain variables you want to see
+
+#Let’s filter for Cambodia and remove the continent and lifeExp columns. We’ll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on gap_cambodia
+gap_cambodia  <- filter(gapminder, country == "Cambodia")
+gap_cambodia2 <- select(gap_cambodia, -continent, -lifeExp)
+
+#meet the pipe operator! next
+gapminder %>% head() #same as head(gapminder)
+## instead of this...
+gap_cambodia  <- filter(gapminder, country == "Cambodia")
+gap_cambodia2 <- select(gap_cambodia, -continent, -lifeExp) 
+## ...we can do this
+gap_cambodia  <- gapminder %>% filter(country == "Cambodia")
+gap_cambodia2 <- gap_cambodia %>% select(-continent, -lifeExp)
+
+#lets try to mutate 
+gapminder %>%
+  mutate(gdp = pop * gdpPercap)
+
+#Calculate the population in thousands for all Asian countries in the year 2007 and add it as a new column.
+gapminder %>%
+  filter(continent == "Asia",
+         year == 2007) %>%
+  mutate(pop_thousands = pop/1000) %>%
+  select(country, year, pop_thousands) #this cleans up the dataframe but isn't necessary
+
+#What if we wanted to know the total population on each continent in 2002? Answering this question requires a grouping variable.
+gapminder %>%
+  filter(year == 2002) %>%
+  group_by(continent) %>% 
+  mutate(cont_pop = sum(pop))
+#summarize() will actually only keep the columns that are grouped_by or summarized. So if we wanted to keep other columns, we’d have to do have a few more steps (we’ll get into it tomorrow). ungroup() removes the grouping and it’s good to get in the habit of using it after a group_by().
+gapminder %>%
+  group_by(continent) %>%
+  summarize(cont_pop = sum(pop)) %>%
+  ungroup()
+#But let’s say we wanted to order it in ascending order for year. The dplyr function is arrange().
+gapminder %>%
+  group_by(continent, year) %>%
+  summarize(cont_pop = sum(pop)) %>%
+  arrange(year)
+
+
+#What is the maximum GDP per continent across all years?
+
+gapminder %>%
+  mutate(gdp = pop * gdpPercap) %>% #create gdp
+  group_by(continent) %>% #group it by continent 
+  mutate(max_gdp = max(gdp)) %>% #get mac gdp
+  filter(gdp == max_gdp)
+
+#arrange your data frame in descending order (opposite of what we’ve done). Expect that this is possible: ?arrange
+#save your data frame as a variable
+#find the maximum life expectancy for countries in Asia. What is the earliest year you encounter? The latest?
+asia_life_exp <- gapminder %>%
+  filter(continent == 'Asia') %>%
+  group_by(country) %>%
+  filter(lifeExp == max(lifeExp)) %>%
+  arrange(-year)
+
+```

@@ -1,0 +1,38 @@
+---
+title: "Amy's Data Visuals Final"
+format: docx
+editor: visual
+---
+
+## Eelgrass Data Visualization
+
+### Amy Yoger - BIOL 708
+
+```{r}
+1 + 1
+library(tidyverse)
+library(ggplot2)
+
+averageshoot <- read.csv("/Users/amyyoger/Library/Mobile Documents/com~apple~CloudDocs/SFSU/Classes/BIO 708 Simonis/GitHub/BIO-708/Data/averageshoot.csv")
+
+ggplot(data=averageshoot, mapping=aes(x=treatment, y=length, color=treatment, fill=treatment)) +
+  geom_bar(stat="identity") +
+labs(title= "Average Eelgrass Shoot Length By pH Treatment", x="pH Treatment", y="Shoot Length (cm)") +
+coord_cartesian(ylim=c(100,125))
+```
+
+**Figure 1:** This graph shows the average eelgrass shoot length in reduced pH and ambient pH.
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+shootroot <- read.csv("/Users/amyyoger/Library/Mobile Documents/com~apple~CloudDocs/SFSU/Classes/BIO 708 Simonis/GitHub/BIO-708/Data/shootrhizome.csv")
+
+ggplot(data=shootroot, mapping=aes(x=Rhizome, y=Shoot, color=Treatment)) +
+  geom_point(stat="identity")+
+  labs(title= "Eelgrass Shoot vs. Rhizome Length at Different pH levels in San Francisco Bay", x="Rhizome Length (cm)", y="Shoot Length (cm)") + theme(plot.title = element_text(hjust=0.4))
+
+```
+
+**Figure 2:** This graph compares eelgrass shoot to rhizome length at different pH levels.

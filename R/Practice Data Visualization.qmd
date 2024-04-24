@@ -64,4 +64,5 @@ ggplot(se)+geom_boxplot(aes(x=park_name, y=visitors))+facet_wrap(~state, scales=
 
 #show a line for visitors at se parks over time
 ggplot(se)+ geom_line(aes(x=year,y=vistors, color=park_name))
+
 ```

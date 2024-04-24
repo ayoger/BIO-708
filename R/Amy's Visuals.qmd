@@ -1,0 +1,46 @@
+---
+title: "Amy's Data Visuals"
+author: "Amy Yoger"
+format: docx
+editor: visual
+---
+
+## Amy's Data Visualization
+
+```{r}
+install.packages(("ggplot2"))
+library(ggplot2)
+install.packages("maps")
+install.packages("sf")
+library(sf)
+# Load the shapefile
+shapefile_data <- st_read("/Users/amyyoger/Downloads/SF_Bay_Eelgrass_(BCDC_2020) 2")
+ggplot(shapefile_data) +
+  geom_sf(data = shapefile_data, fill = "lightblue", color = "black") +
+  theme_minimal()
+install.packages("osmdata")
+library(osmdata)
+
+#Load the second shapefile 
+install.packages("ggmap")
+library(ggmap)
+install.packages("OpenStreetMap")
+library(OpenStreetMap)
+library(tidyverse)
+
+library(png)
+# Specify the file path to your PNG image
+image_path <- "/Users/amyyoger/Downloads/map.png"
+
+library(readr)
+url <- "https://www.openstreetmap.org/#map=9/37.7957/-122.6280"
+data <- read_csv(url)
+
+location <- "San Francisco"
+zoom <- 12
+get_map(location = 37.807901, -122.473565, zoom = 12, source = "osm")
+
+base_map<- get_map( location = c(lon = -122.473565, lat = 37.807901), zoom = "auto", scale = "auto", maptype = c("terrain"), source = c("osm")
+  
+ggplot(base_map)
+```
